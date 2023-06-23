@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>CSV Upload</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+  
+
+  <!-- css style  -->
+<style>
+
+.up-f{
+  color: rgb(107, 107, 199);
+  font-family: Verdana;
+  margin-left: 1rem;
+  margin-top: 1rem;
+}
+.filename{
+  color: rgb(89, 106, 106);
+
+}
+
+</style>
+
+
+    <!-- home.ejs -->
+
+<h2 class="up-f">Uploaded Files</h2>
+
+<table>
+    <thead>
+      <tr>
+        <th class="filename">Filename</th>
+        <th> </th>
+        <th> </th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% files.forEach(function(file) { %>
+        <tr>
+          <td><%= file.filename %></td>
+          <td> </td>
+          <td> </td>
+          <td>
+            <a href="/csv/<%= file._id %>">View</a>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  
+<!-- // css style  -->
+<style>
+  .container{
+    border: 2px solid black;
+    width: 40%;
+    height: 15rem;
+    border-radius: 15px;
+    background-color:rgb(207 205 193);
+  }
+  .text-center{
+    margin-right: 4rem;
+    margin-top: 1rem;
+    color:rgb(107, 107, 199);
+  }
+  .btn{
+    background-color: green;
+  }
+  .btn:hover{
+    color: rgb(81, 171, 141);
+  }
+</style>
+  
+
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">CSV Upload</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form action="/upload" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="csvFile">Select a CSV file to upload:</label>
+                        <input type="file" class="form-control-file" id="csvFile" name="csv" accept=".csv">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
